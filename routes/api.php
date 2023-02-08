@@ -21,4 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('categories', CategoryController::class);
+
+Route::prefix('products')->group(function () {
+    Route::post('/upload/{id}', [ProductController::class, 'upload']);
+});
 Route::resource('products', ProductController::class);
